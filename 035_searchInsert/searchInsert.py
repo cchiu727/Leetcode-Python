@@ -3,22 +3,16 @@ from typing import List
 
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
-        min = 0
-        max = len(nums) - 1
+        min_ = 0
+        max_ = len(nums) - 1
 
-        if target > max:
-            return len(nums)
-        elif target < min:
-            return 0
-
-        while min != max:
-            mid = (min + max) // 2
-
-            if nums[mid] == target:
-                return mid
-            elif nums[mid] < target:
-                min = mid + 1
+        while min_ <= max_:
+            mid_ = (min_ + max_) // 2
+            if nums[mid_] == target:
+                return mid_
+            if nums[mid_] < target:
+                min_ = mid_ + 1
             else:
-                max = mid - 1
-
-        return mid
+                max_ = mid_ - 1
+        
+        return min_
